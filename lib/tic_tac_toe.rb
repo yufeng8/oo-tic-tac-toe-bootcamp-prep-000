@@ -1,9 +1,6 @@
 class TicTacToe
-  def initialize(board=nil, index, value, location)
+  def initialize(board=nil)
     @board = board || Array.new(9, " ")
-    @index = index
-    @value = value
-    @location = location
   end
 
   # Define your WIN_COMBINATIONS constant
@@ -21,25 +18,25 @@ class TicTacToe
     user_input.to_i - 1
   end
 
-  def move
-    @board[@index] = @value
+  def move(board, index, value)
+    @board[index] = value
   end
 
-  def position_taken?
-    @board[@location] != " " && @board[@location] != ""
+  def position_taken?(board, location)
+    @board[location] != " " && @board[location] != ""
   end
 
-  def valid_move?
-    @index.between?(0,8) && !position_taken?
+  def valid_move?(board, index)
+    index.between?(0,8) && !position_taken?(board, index)
   end
 
   def turn
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
-    if valid_move?
+    if valid_move?(board, index)
       value = current_player
-      move
+      move(board, index, value)
       display_board
     else
       turn
