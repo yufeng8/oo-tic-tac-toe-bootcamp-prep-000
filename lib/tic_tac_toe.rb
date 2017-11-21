@@ -19,11 +19,11 @@ class TicTacToe
   end
 
   def move(board, index, value)
-    @board[index] = value
+    @board[@index] = @value
   end
 
   def position_taken?(board, location)
-    @board[location] != " " && @board[location] != ""
+    @board[@location] != " " && @board[@location] != ""
   end
 
   def valid_move?(board, index)
