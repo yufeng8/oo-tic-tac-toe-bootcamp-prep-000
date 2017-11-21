@@ -72,7 +72,7 @@ class TicTacToe
   end
 
   def full?
-    board.detect do |element|
+    @board.detect do |element|
       if (element == " " || element == "")
         return false
       end
